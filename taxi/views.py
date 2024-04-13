@@ -35,7 +35,8 @@ class CarDetailView(generic.DetailView):
     model = Car
     template_name = "taxi/car_detail.html"
     queryset = (Car.objects.
-                prefetch_related("manufacturer", "drivers"))
+                select_related("manufacturer").
+                prefetch_related("drivers"))
 
 
 class DriverListView(generic.ListView):
